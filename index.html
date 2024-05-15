@@ -41,6 +41,65 @@
   </script>
   <link href="/images/logo.png" rel="shortcut icon" type="image/x-icon" />
   <link href="/images/logo.png" rel="apple-touch-icon" />
+  <style type="text/css">
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 98%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 99999;
+      border-radius: 10px;
+    }
+
+    .mod_content {
+      background-color: #131740;
+      width: 400px;
+      margin: 100px auto;
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    /* Hide the modal when not displayed */
+    .hidden {
+      display: none;
+    }
+
+    #yesButton {
+      padding: 8px 28px;
+      margin-right: 15px;
+      outline: none;
+      border: none;
+      background-color: #ffa500;
+      color: #fff;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    #noButton {
+      padding: 8px 28px;
+      outline: none;
+      border: none;
+      background-color: #ffa500;
+      color: #fff;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    .faq_inner .card-header h4 button::before {
+      display: none !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      .mod_content {
+        width: 95%;
+      }
+      .mob_space {
+        margin-top: 50px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -356,6 +415,80 @@
   <div class="div-block-22">
     <img src="/images/logo.png" loading="lazy" alt="" />
   </div>
+  <!-- modal content -->
+  <div id="myModal" class="modal">
+    <div class="mod_content" style="background-color: #131740">
+      <p style="color: #fff; font-size: 17px">
+        Are you ready to Explore Sosa?
+      </p>
+      <div
+        style="
+          text-align: center;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <img
+          src="/images/img5.jpg"
+          style="max-width: 300px; width: 80%; margin: 20px 0"
+          alt=""
+        />
+      </div>
+      <div
+        class="flex_dis"
+        style="display: flex; align-items: center; justify-content: center"
+      >
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+      </div>
+    </div>
+  </div>
+  <audio
+    style="opacity: 1"
+    id="closingAudio"
+    src="/audio.mp3"
+  ></audio>
+  <script>
+    window.onload = function () {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "block";
+
+      // Close the modal when clicking outside of it
+      window.onclick = function (event) {
+        var closeButton = document.getElementById("closeModal");
+        var closingAudio = document.getElementById("closingAudio");
+        // var video = document.getElementById("videoPlayer");
+
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
+
+        if (yesButton) {
+          modal.style.display = "none";
+          closingAudio.play();
+        } else {
+          if (noButton) {
+            modal.style.display = "none";
+            // video.play();
+            closingAudio.play();
+          }
+        }
+
+        // yesButton.addEventListener("click", function () {
+        //   modal.style.display = "none";
+        //   closingAudio.play();
+        // });
+
+        // // Hide the modal when "No" is clicked
+        // noButton.addEventListener("click", function () {
+        //   modal.style.display = "none";
+        // });
+      };
+    };
+  </script>
+
+
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=648c8ad3f43c3e327adf6db7"
     type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous"></script>
